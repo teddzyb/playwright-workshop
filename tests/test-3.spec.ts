@@ -1,12 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../parameters';
 
-test('checkout page', async ({ page }) => {
+test('checkout page', async ({ page, username }) => {
   // open the web application
   await page.goto('https://www.saucedemo.com/');
 
   // enter valid credentials and click the login button
   await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill('standard_user');
+  await page.locator('[data-test="username"]').fill(username);
   await page.locator('[data-test="password"]').click();
   await page.locator('[data-test="password"]').fill('secret_sauce');
   await page.locator('[data-test="login-button"]').click();
